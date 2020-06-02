@@ -149,7 +149,7 @@ bool OnConflict(IDataset dataset, IList<SyncConflict> conflicts)
  		...
 ```
 
-  <br>但是显然，这**不是**一个好主意，因为同步发生在Dataset级别，因此每次同步都会浪费网络资源在未使用的游戏状态数据上。此外，这样的策略将使Dataset很难满足[限制]()。
+  <br>但是显然，这**不是**一个好主意，因为同步发生在Dataset级别，因此每次同步都会浪费网络资源在未使用的游戏状态数据上。此外，这样的策略将使Dataset很难满足[限制](#limits)。
   
    <br>更好的方式是每个游戏存档使用一个dataset，还可以为每个存档添加一个封面图像。如果有必要，可以将玩家的偏好保存在另一个Dataset里：
   ```
