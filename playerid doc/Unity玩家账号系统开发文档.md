@@ -311,7 +311,21 @@ PlayerId提供的大部分功能都可以在Unity编辑器play模式下进行测
 		* 点击“-” 删除Metal.
 
 1. Android  应用的编译  
-
+    **在build.gradle里添加依赖**  
+    编译Android项目需要在**build.gradle**里添加以下依赖:
+    
+    ```  
+    ...  
+    dependencies {
+        ...
+        implementation "androidx.browser:browser:1.2.0"
+        ...
+    }
+    ...
+    ```
+    如何在Unity里修改gradle设置，可以参考文档[**Unity Gradle for Android**](https://docs.unity3d.com/Manual/android-gradle-overview.html)里的
+    **Providing a custom Gradle build template**部分。
+	
 	按照**File ► Build Settings**进入设置页面
 	1. 点击Add Open Scenes 将包含prefab的场景添加到Scenes in Build，如下图
 	1. 切换到Android平台
