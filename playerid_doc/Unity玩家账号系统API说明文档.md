@@ -50,7 +50,7 @@
 # <a name="package"></a>包
 com.unity.playerid-cn包含了本文档中列出大多数API调用。
 
-要开始使用下面列出的API，您需要通过Unity编辑器项目设置(Project Settings)创建ID 域(ID domain)和OAuth2客户端(OAuth2 client)。有关如何执行此操作的更多信息和步骤，请参阅[```《PlayerId_Getting_Started》```](../Documentation~/PlayerId_Getting_Started.md)。
+要开始使用下面列出的API，您需要通过Unity编辑器项目设置(Project Settings)创建ID 域(ID domain)和OAuth2客户端(OAuth2 client)。有关如何执行此操作的更多信息和步骤，请参阅[```《Unity玩家账号系统开发文档》```](../playerid_doc/Unity玩家账号系统开发文档.md)。
 
 <font color=Red>```注意```</font>：此处的所有API都需要ID domain key作为Header的一部分。该key是从Unity Editor项目设置(Project Setting)的ID domain部分生成的字符串。对于授权API，您可能还需要添加Client ID到请求body中，该Client ID在Unity编辑器项目设置（Project Settings）的OAuth2 client生成。
 
@@ -634,7 +634,7 @@ OAuth 2.0 [token endpoint](https://tools.ietf.org/html/rfc6749#section-3.2)
 
 **Authorization**
 
-需要访问令牌(acces token)才能调用此API。传递访问令牌作为标准Authorization header。需要满足```identity.user```的范围。
+需要访问令牌(acces token)才能调用此API。传递访问令牌作为标准Authorization header。需要满足```identity.user```的范围。关于此请参考[Access Token](#accesstoken)
 
 **Request 语句参数**
 
@@ -828,6 +828,75 @@ OAuth 2.0 [token endpoint](https://tools.ietf.org/html/rfc6749#section-3.2)
 ### <a name="accesstoken"></a>Access Token
 
 访问令牌是短暂的令牌（约1小时），通常以JWT格式授予对资源的访问权限。
+
+
+需要访问令牌(acces token)才能调用此API。传递访问令牌作为标准Authorization header。且需要满足```identity.user-admin```的权限。
+
+**获取access token**:如何获取用户管理API以及Admin API的```iddomain.admin_token```(```identity.user-admin```)权限的Access Token, 请参考以下例子。
+
+**1.首先创建某个Iddomain 下Admin OAuth Client**
+
+*POST /oauth2/clients*
+
+    
+ **Authorization**
+    
+    该Token 可以在editor代码里面获取，为当前iddomain 下的 m_DeveloperToken(SDK代码里）
+ **Request Body**
+ 
+| **Field Path** | **类型** | **描述** |
+| ------ | ------ | ------ |
+|client_name|string|创建一个name(自定义)|
+| id_domain|string|某个Iddomain|
+|grant_types|string|值为client_credentials|
+|response_types|string|值为token|
+|scope|string|值为identity.admin|
+
+**Response Body**
+
+| **Field Path** | **类型** | **描述** |
+| ------ | ------ | ------ |
+|client_id|string|返回|
+| client_name|string|自定义创建的name|
+|client_secret|string|返回|
+|id_domain|string|当前的iddomain|
+|grant_types|string|返回|
+|response_types|string|返回|
+|scope|string|返回|
+|token_endpoint_auth_method |string|返回|
+
+**2.获取到某个iddomain 下的Admin Token**
+
+*POST /oauth2/clients*
+
+**Authorization**
+
+无
+
+**Request Body**
+ 
+| **Field Path** | **类型** | **描述** |
+| ------ | ------ | ------ |
+|grant_type|string|值为client_credentials|
+| scope|string|值为identity.admin|
+|client_id|string|值为上面获取的client_id|
+|client_secret|string|值为上面获取的client_secret|
+
+**Response Body**
+
+获取到的access_token 即为当前```iddomain.admin_token```权限的access token
+
+***
+
+
+
+
+    
+    
+
+
+
+ 
 
 ### <a name="idtoken"></a>ID Token
 
