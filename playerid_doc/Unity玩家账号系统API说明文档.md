@@ -832,7 +832,7 @@ OAuth 2.0 [token endpoint](https://tools.ietf.org/html/rfc6749#section-3.2)
 
 需要访问令牌(acces token)才能调用此API。传递访问令牌作为标准Authorization header。且需要满足```identity.user-admin```的权限。
 
-**获取access token**:如何获取用户管理API以及Admin API的```iddomain.admin_token```(```identity.user-admin```)权限的Access Token, 请参考以下例子。
+**获取access token**:如何获取用户管理API以及Admin API的```iddomain.admin_token```权限的Access Token, 请参考以下例子。
 
 **1.首先创建某个Iddomain 下Admin OAuth Client**
 
