@@ -829,111 +829,117 @@ OAuth 2.0 [token endpoint](https://tools.ietf.org/html/rfc6749#section-3.2)
 
 访问令牌是短暂的令牌（约1小时），通常以JWT格式授予对资源的访问权限。
 
-<font color=red>**获取用户管理API以及Admin API的```iddomain.admin_token```权限的Access Token：** </font>
+<font color=red>**关于获取用户管理API以及Admin API的```iddomain.admin_token```权限的```Access Token```：** </font>
 
 请参考以下例子。
 
-**1.首先创建某个Iddomain 下Admin OAuth Client**
-
-*POST /oauth2/clients*
+*  首先创建某个```id_domain``` 下```Admin OAuth Client```
+    - **POST /oauth2/clients**
 
     
- **Authorization**
+    **Authorization**
     
- 该Token 可以在editor复制得到。在**project setting**->**Unity UserAuth**->**Copy Token**
+    该```Token ```可以在editor复制得到。在**project setting**->**Unity      UserAuth**->**Copy Token**
+    
+    **Request Body**
  
- **Request Body**
- 
-| **Field Path** | **类型** | **描述** |
-| ------ | ------ | ------ |
-|client_name|string|创建一个name(自定义)|
-| id_domain|string|某个Iddomain|
-|grant_types|string|值为client_credentials|
-|response_types|string|值为token|
-|scope|string|值为identity.admin|
+    | **Field Path** | **类型** | **描述** |
+    | ------ | ------ | ------ |
+    |```client_name```|string|创建一个name(自定义)|
+    | ```id_domain```|string|某个```id_domain```|
+    |```grant_types```|string|值为```client_credentials```|
+    |```response_types```|string|值为```token```|
+    |```scope```|string|值为```identity.admin```|
 
-例如：
+    例如：
+    
+    ```json
+        {
+          "client_name": "test",
+          "id_domain": "1ed2a173-f21d-4320-86c4-b8a5f8b44c8a",
+          "grant_types":  [
+           "client_credentials"
+          ],
+          "response_types": [
+           "token"
+          ],
+          "scope": "identity.admin"
+        }
+    ```
+     
 
-`{"client_name": "test",
-"id_domain": "1ed2a173-f21d-4320-86c4-b8a5f8b44c8a",
-"grant_types": [
+    **Response Body**
+
+    | **Field Path** | **类型** | **描述** |
+    | ------ | ------ | ------ |
+    |```client_id```|string|返回|
+    | ```client_name```|string|自定义创建的name|
+    |```client_secret```|string|返回|
+    |```id_domain```|string|当前的```id_domain```|
+    |```grant_types```|string|返回|
+    |```response_types```|string|返回|
+    |```scope```|string|返回|
+    |```token_endpoint_auth_method``` |string|返回|
+    
+    例如：
+
+    ```json
+    {  
+      "client_id": "34f644c5-9f30-42cf-85a9-75ee63281cd1",  
+      "client_name": "test",    
+      "client_secret": "",
+      "id_domain": "1ed2a173-f21d-4320-86c4-b8a5f8b44c8a", 
+      "grant_types": [
         "client_credentials"
-    ],
-     "response_types": [
+      ],  
+      "response_types": [
         "token"
-    ], "scope": "identity.admin"}`
+       ], 
+       "scope": "identity.admin",
+       "token_endpoint_auth_method": "client_secret_post"
+     }
+    ```
 
+*  获取到某个```id_domain``` 下的```Admin Token```
 
-**Response Body**
+    - **POST /oauth2/token**
 
-| **Field Path** | **类型** | **描述** |
-| ------ | ------ | ------ |
-|client_id|string|返回|
-| client_name|string|自定义创建的name|
-|client_secret|string|返回|
-|id_domain|string|当前的iddomain|
-|grant_types|string|返回|
-|response_types|string|返回|
-|scope|string|返回|
-|token_endpoint_auth_method |string|返回|
+    **Authorization**
 
-例如：
+    无
 
-`{
-    "client_id": "34f644c5-9f30-42cf-85a9-75ee63281cd1",
-    "client_name": "test",
-    "client_secret": "EfCDQXaLt0FmRdhBXs-jACjKx_DiTyCFUZC9X5qSu0I",
-    "id_domain": "1ed2a173-f21d-4320-86c4-b8a5f8b44c8a",
-    "grant_types": [
-        "client_credentials"
-    ],
-    "response_types": [
-        "token"
-    ],
-    "scope": "identity.admin",
-    "token_endpoint_auth_method": "client_secret_post"
-}`
-
-**2.获取到某个iddomain 下的Admin Token**
-
-*POST /oauth2/clients*
-
-**Authorization**
-
-无
-
-**Request Body**
+    **Request Body**
  
-| **Field Path** | **类型** | **描述** |
-| ------ | ------ | ------ |
-|grant_type|string|值为client_credentials|
-| scope|string|值为identity.admin|
-|client_id|string|值为上面获取的client_id|
-|client_secret|string|值为上面获取的client_secret|
+    | **Field Path** | **类型** | **描述** |
+    | ------ | ------ | ------ |
+    |```grant_type```|string|值为```client_credentials```|
+    | ```scope```|string|值为```identity.admin```|
+    |```client_id```|string|值为上面获取的```client_id```|
+    |```client_secret```|string|值为上面获取的```client_secret```|
 
-例如：
-`{
-	"grant_type": "client_credentials",
-	"scope": "identity.admin",
-	"client_id": "d70b7628-f33f-4d42-a07f-1a4065dc1deb",
-	"client_secret": "BVubFpS5ksmADCQSZpeJ3wT6yTX2TwOD2q8GavvczAE"
-}`
+    例如：
 
-**Response Body**
+    ```json
+    { 
+      "grant_type": "client_credentials",
+      "scope": "identity.admin",
+	   "client_id": "d70b7628-f33f-4d42-a07f-1a4065dc1deb",
+	   "client_secret": ""	
+   }
+   ```
 
-获取到的access_token 即为当前```iddomain.admin_token```权限的access token
+    **Response Body**
+
+    获取到的```access_token``` 即为当前```iddomain.admin_token```权限的 ```access token```
+
+  <font color=red>**注意：** </font>```client secret```仅仅是应用程序和授权服务器双方已知的机密。它使用```token```仅授权给认证的用户以此来保护您的资源。
+
+  请保护您的```client secret```，切勿将其包含在基于移动或基于浏览器的应用程序中。如果您的```client secret```曾经遭到破坏，则使用新的```secret```并用新的```client secret```更新所有授权的应用程序。
+
 
 ***
 
 
-
-
-    
-    
-
-
-
- 
 
 ### <a name="idtoken"></a>ID Token
 
