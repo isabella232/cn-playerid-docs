@@ -323,6 +323,13 @@ PlayerId提供的大部分功能都可以在Unity编辑器play模式下进行测
     }
     ...
     ```
+    如果要启用APPLE 登录,**Unity Editor2020**版本中需要在**gradleTemplate.properties** 文件中添加
+    
+    ```  
+   android.useAndroidX=true
+android.enableJetifier=true
+    ```
+     
     如何在Unity里修改gradle设置，可以参考文档[**Unity Gradle for Android**](https://docs.unity3d.com/Manual/android-gradle-overview.html)里的
     **Providing a custom Gradle build template**部分。
 	
