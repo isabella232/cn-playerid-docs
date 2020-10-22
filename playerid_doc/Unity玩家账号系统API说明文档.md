@@ -839,7 +839,7 @@ OAuth 2.0 [token endpoint](https://tools.ietf.org/html/rfc6749#section-3.2)
     
     **Authorization**
     
-    该```Token ```可以在editor复制得到。在**project setting**->**Unity      UserAuth**->**Copy Token**
+    该```Token ```可以在editor复制得到。在**project setting**->**Unity      UserAuth**->**Copy Token**, <font color=red>**但```Authorization```里的```Token```需要在```editor```复制得到的```Token``` 前加上``` Bearer ```，即为```Bearer Token```**</font>
     
     **Request Body**
  
