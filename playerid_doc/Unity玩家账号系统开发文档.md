@@ -165,6 +165,7 @@ PlayerId SDK需要Unity 2019.2及以上。开发者可以通过Unity的 Package 
 		|     App ID  | 无 |微信开发平台的AppID|
 		|     Callback Endpoint | 无 |如果开发者通过自己的服务端来获取微信的access token则需要填写。|
 		|     Generate Callback code | 勾选 |是否使用该package提供的默认微信回调方法，该方法用户接收[微信的返回值](https://developers.weixin.qq.com/doc/oplatform/Mobile_App/Access_Guide/Android.html)。如果需要自己实现回调函数请取消勾选。|
+		|Universal link|无|ios 端Wechat SDK需要传入一个universal link 该值请填写在微信官方申请APPID时的Universal link的值, android 则无需填写|
 
 		注意这里的app id和上面的client id是一个值，但这里是在拉取微信，也就是获得code时用到，必须填写
 	1. 添加微信登录选项
