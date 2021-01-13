@@ -120,6 +120,11 @@ PlayerId SDK需要Unity 2019.2及以上。开发者可以通过Unity的 Package 
 
 	**ID Provider 设置**
 	具体参考 第三方登录——微信登录 
+	
+	关于Apple 登录，在Bundle Id 那一栏可以绑定多个 Bundle Id，用空格分开,如下图所示。
+	
+	![](images/Bundle.png)
+	
 
 
 	**User Auth 其它设置**
