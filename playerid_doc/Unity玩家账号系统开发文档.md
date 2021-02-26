@@ -333,7 +333,8 @@ PlayerId提供的大部分功能都可以在Unity编辑器play模式下进行测
     
     ```  
    android.useAndroidX=true
-android.enableJetifier=true
+   android.enableJetifier=true
+
     ```
      
     如何在Unity里修改gradle设置，可以参考文档[**Unity Gradle for Android**](https://docs.unity3d.com/Manual/android-gradle-overview.html)里的
