@@ -428,5 +428,5 @@ PlayerId提供的大部分功能都可以在Unity编辑器play模式下进行测
 该服务的后端服务（PlayerId）实现放在如下目录，可供参考     
 	`{directory}/com.unity.playerid/Runtime/Backend/UnityUSerAuth/.`
 
-如果需要更多技术支持，可通过[Unity Connect PlayerId支持小组](https://connect.unity.com/g/wan-jia-zhang-hao-xi-tong-player-id-cnshi-yong?tab=discussion)联系我们。
+如果需要更多技术支持，可通过[Unity Connect PlayerId支持小组](https://connect.unity.com/g/wan-jia-zhang-hao-xi-tong-player-id-cnshi-yong?tab=discussion) 或者 加入QQ群:740695563 联系我们。
 
